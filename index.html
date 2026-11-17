@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eee6d8">
+<title>An Unread Letter — Reader's Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4eee3;--ink:#332b27;--muted:#766b61;--line:#d9cdbb;--accent:#8a594b;--white:#fffdf8}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}
+.page{max-width:760px;margin:0 auto;padding:34px 20px 70px}
+.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.hero{margin:34px 0 22px;padding:48px 34px 42px;background:linear-gradient(135deg,#40342e,#6b4d41);color:#f7efe4;border-radius:5px;position:relative;overflow:hidden;box-shadow:0 16px 40px #49382a20}
+.hero:after{content:"";position:absolute;inset:13px;border:1px solid #d9c6a955;pointer-events:none}
+.kicker{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#ddc9aa}
+h1{font:500 clamp(38px,8vw,62px)/1.05 "Playfair Display",serif;margin:20px 0 12px;max-width:520px}
+.subtitle{font:italic 18px "Playfair Display",serif;color:#e7d8c5;margin:0}
+.hero-foot{margin-top:34px;font-size:11px;letter-spacing:.08em;color:#ddc9aa}
+.intro{font:italic 22px "Playfair Display",serif;margin:30px 0 8px}
+.lede{color:var(--muted);line-height:1.75;font-size:14px;max-width:620px}
+form{margin-top:28px}.section{background:var(--white);border:1px solid var(--line);padding:25px 26px;margin:14px 0;border-radius:4px}
+label,.question{display:block;font-weight:600;font-size:14px;margin-bottom:12px}
+.hint{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:5px}
+input[type=text],textarea,select{width:100%;border:1px solid var(--line);border-radius:3px;background:#fffefa;padding:13px 14px;color:var(--ink);font:14px "DM Sans",sans-serif;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px #8a594b16}
+textarea{min-height:110px;resize:vertical;line-height:1.6}
+.rating{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:7px}
+.rating input{position:absolute;opacity:0;pointer-events:none}
+.rating label{font-size:30px;color:#d7c9b8;cursor:pointer;margin:0;transition:color .15s}
+.rating label:hover,.rating label:hover~label,.rating input:checked~label{color:#b27b48}
+.rating label:focus-within{outline:2px solid var(--accent)}
+.options{display:flex;flex-wrap:wrap;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:10px 13px;border-radius:30px;font-size:13px;font-weight:400;cursor:pointer}
+.pill input{accent-color:var(--accent)}
+.checkline{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--muted);line-height:1.5;font-weight:400}
+.checkline input{margin-top:3px;accent-color:var(--accent)}
+button{width:100%;border:0;background:var(--accent);color:#fffaf3;padding:16px 20px;font:600 13px "DM Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:transform .15s,background .15s}
+button:hover{background:#704638;transform:translateY(-1px)}button:disabled{opacity:.55;cursor:wait;transform:none}
+.status{text-align:center;min-height:22px;margin:14px 0;color:var(--accent);font-size:13px}
+.footer{text-align:center;margin-top:28px;color:var(--muted);font:italic 17px "Playfair Display",serif}
+.smallprint{text-align:center;color:#96897b;font-size:10px;margin-top:12px}
+@media(max-width:520px){.page{padding:20px 13px 45px}.hero{padding:38px 25px}.section{padding:21px 18px}.topline{font-size:9px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="topline"><span>A reader's note</span><span>A story by its author</span></div>
+  <header class="hero">
+    <div class="kicker">Thank you for reading</div>
+    <h1>An Unread<br><em>Letter</em></h1>
+    <p class="subtitle">Every story leaves something unsaid.</p>
+    <div class="hero-foot">THE LAST PAGE IS NOT THE END.</div>
+  </header>
+  <p class="intro">Dear Reader,</p>
+  <p class="lede">You've reached the end of <em>An Unread Letter</em>. Now I'd love to hear what stayed with you. Share your honest thoughts, a favourite moment, or simply the feeling you carried after the final page. Every response means a lot.</p>
+
+  <form id="reviewForm">
+    <section class="section">
+      <label for="readerName">What should I call you? <span class="hint">Optional — you can leave this blank.</span></label>
+      <input id="readerName" name="readerName" type="text" maxlength="70" placeholder="Your name or nickname">
+    </section>
+
+    <section class="section">
+      <span class="question">How would you rate the book?<span class="hint">Choose one star rating.</span></span>
+      <div class="rating" role="radiogroup" aria-label="Book rating">
+        <input id="star5" type="radio" name="rating" value="5" required><label for="star5" title="5 stars">★</label>
+        <input id="star4" type="radio" name="rating" value="4"><label for="star4" title="4 stars">★</label>
+        <input id="star3" type="radio" name="rating" value="3"><label for="star3" title="3 stars">★</label>
+        <input id="star2" type="radio" name="rating" value="2"><label for="star2" title="2 stars">★</label>
+        <input id="star1" type="radio" name="rating" value="1"><label for="star1" title="1 star">★</label>
+      </div>
+    </section>
+
+    <section class="section">
+      <label for="favourite">Which character or moment stayed with you the most?</label>
+      <textarea id="favourite" name="favourite" maxlength="1500" placeholder="Tell me about the part you keep thinking about..."></textarea>
+    </section>
+
+    <section class="section">
+      <label for="feeling">How did the story make you feel? <span class="hint">A few words are enough.</span></label>
+      <textarea id="feeling" name="feeling" maxlength="1500" placeholder="Did it make you smile, think, reflect, or feel something unexpected?"></textarea>
+    </section>
+
+    <section class="section">
+      <label for="review">Your review of <em>An Unread Letter</em> <span class="hint">Please write at least a few words. Honest feedback is welcome.</span></label>
+      <textarea id="review" name="review" minlength="5" maxlength="5000" required placeholder="If you were telling a friend about this book, what would you say?"></textarea>
+    </section>
+
+    <section class="section">
+      <span class="question">Would you recommend this book?</span>
+      <div class="options">
+        <label class="pill"><input type="radio" name="recommend" value="Definitely" checked> Definitely</label>
+        <label class="pill"><input type="radio" name="recommend" value="Maybe"> Maybe</label>
+        <label class="pill"><input type="radio" name="recommend" value="Not sure"> Not sure</label>
+      </div>
+    </section>
+
+    <section class="section">
+      <label class="checkline"><input type="checkbox" id="permission" name="permission"> I give the author permission to share a short excerpt of my review publicly, with my chosen name or anonymously. This is optional.</label>
+    </section>
+
+    <button id="submitButton" type="submit">Send my review</button>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </form>
+  <div class="footer">Thank you for being part of this story.</div>
+  <div class="smallprint">Your review is sent to the author. Please do not include private or sensitive information.</div>
+</main>
+<script>
+/* Paste your deployed Google Apps Script Web App URL between the quotes below. */
+const SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+const form = document.getElementById("reviewForm");
+const statusEl = document.getElementById("status");
+const button = document.getElementById("submitButton");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (!form.reportValidity()) return;
+  if (!SCRIPT_URL.startsWith("https://script.google.com/")) {
+    statusEl.textContent = "The form is designed. Connect its private review sheet by following the setup guide.";
+    return;
+  }
+  const data = Object.fromEntries(new FormData(form).entries());
+  data.permission = document.getElementById("permission").checked ? "Yes" : "No";
+  data.book = "An Unread Letter";
+  button.disabled = true;
+  button.textContent = "Sending…";
+  statusEl.textContent = "";
+  try {
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
+      body: new URLSearchParams(data).toString()
+    });
+    form.reset();
+    statusEl.textContent = "Thank you. Your review has been sent!";
+  } catch (error) {
+    statusEl.textContent = "We couldn't send your review. Please try again in a moment.";
+  } finally {
+    button.disabled = false;
+    button.textContent = "Send my review";
+  }
+});
+</script>
+</body>
+</html>
